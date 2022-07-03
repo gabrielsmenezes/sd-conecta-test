@@ -3,6 +3,7 @@ package com.example.sdconectatest.controller;
 import com.example.sdconectatest.domain.Doctor;
 import com.example.sdconectatest.service.delete.DeleteDoctor;
 import com.example.sdconectatest.service.findAllPaged.FindAllDoctor;
+import com.example.sdconectatest.service.findById.FindDoctorById;
 import com.example.sdconectatest.service.insert.InsertDoctor;
 import com.example.sdconectatest.service.update.UpdateDoctor;
 import org.springframework.data.domain.Page;
@@ -23,12 +24,14 @@ public class DoctorController {
     private final UpdateDoctor update;
     private final DeleteDoctor delete;
     private final FindAllDoctor findAll;
+    private final FindDoctorById findById;
 
-    public DoctorController(InsertDoctor insert, UpdateDoctor update, DeleteDoctor delete, FindAllDoctor findAll) {
+    public DoctorController(InsertDoctor insert, UpdateDoctor update, DeleteDoctor delete, FindAllDoctor findAll, FindDoctorById findById) {
         this.insert = insert;
         this.update = update;
         this.delete = delete;
         this.findAll = findAll;
+        this.findById = findById;
     }
 
     @PostMapping
@@ -57,4 +60,8 @@ public class DoctorController {
         return ResponseEntity.ok(this.findAll.execute(pageable, name, specialty));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Doctor> findById(@PathVariable Integer id){
+        return ResponseEntity.ok(this.findById.execute(id));
+    }
 }

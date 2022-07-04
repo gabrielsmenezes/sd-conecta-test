@@ -1,0 +1,3 @@
+jwt:
+  secret: sdconecta
+  expiration: 10000000

@@ -22,13 +22,15 @@ public class Doctor {
 
     private String phone;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<CRM> crms;
+
+    private String authorizationStatus;
 
     public Doctor() {
     }
 
-    public Doctor(Integer id, String email, String password, String name, String surname, String phone, List<CRM> crms) {
+    public Doctor(Integer id, String email, String password, String name, String surname, String phone, List<CRM> crms, String authorizationStatus) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -36,6 +38,7 @@ public class Doctor {
         this.surname = surname;
         this.phone = phone;
         this.crms = crms;
+        this.authorizationStatus = authorizationStatus;
     }
 
     public Integer getId() {
@@ -101,5 +104,13 @@ public class Doctor {
         this.surname = doctor.getSurname().isBlank() ? this.surname : doctor.getSurname();
         this.phone = doctor.getPhone().isBlank() ? this.phone : doctor.getPhone();
         this.crms = doctor.crms.isEmpty() ? this.crms : doctor.crms;
+    }
+
+    public String getAuthorizationStatus() {
+        return authorizationStatus;
+    }
+
+    public void setAuthorizationStatus(String authorizationStatus) {
+        this.authorizationStatus = authorizationStatus;
     }
 }

@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class CRM {
     @Column(nullable = false, length = 45)
-    private String code;
+    private String crm;
     @Column(nullable = false, length = 2)
     private String uf;
     private String specialty;
@@ -14,18 +14,18 @@ public class CRM {
     public CRM() {
     }
 
-    public CRM(String code, String uf, String specialty) {
-        this.code = code;
+    public CRM(String crm, String uf, String specialty) {
+        this.crm = crm;
         this.uf = uf;
         this.specialty = specialty;
     }
 
-    public String getCode() {
-        return code;
+    public String getCrm() {
+        return crm;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCrm(String code) {
+        this.crm = code;
     }
 
     public String getUf() {
